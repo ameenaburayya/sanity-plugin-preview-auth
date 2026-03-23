@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "esnext",
     "module": "preserve",
     "moduleResolution": "bundler",
-    "lib": ["ES2017", "DOM"],
+    "lib": ["esnext", "DOM"],
     "strict": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "jsx": "react-jsx",
-    "rootDir": "./src",
-    "outDir": "./dist"
+    "jsx": "preserve",
+    "rootDir": ".",
+    "outDir": "./dist",
+    "noEmit": true
   },
   "include": ["src"]
 }
