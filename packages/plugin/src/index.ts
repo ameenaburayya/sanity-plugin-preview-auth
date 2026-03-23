@@ -3,3 +3,5 @@ export type { PreviewAuthPluginOptions } from './plugin';
 export { previewAuthSecret } from './schema/previewAuthSecret';
 export { usePreviewAuth } from './hooks/usePreviewAuth';
 export type { UsePreviewAuthOptions, UsePreviewAuthResult } from './hooks/usePreviewAuth';
+export { openPreviewAction } from './actions/openPreviewAction';
+export type { OpenPreviewActionOptions } from './actions/openPreviewAction';

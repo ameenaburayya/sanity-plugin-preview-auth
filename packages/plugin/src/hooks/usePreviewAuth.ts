@@ -23,7 +23,8 @@ export function usePreviewAuth({
 	previewAuthApi,
 }: UsePreviewAuthOptions): UsePreviewAuthResult {
 	const client = useClient(DEFAULT_STUDIO_CLIENT_OPTIONS)
-	const currentUser = useCurrentUser()
+  const currentUser = useCurrentUser()
+  
 	const [isAuthenticating, setIsAuthenticating] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 
