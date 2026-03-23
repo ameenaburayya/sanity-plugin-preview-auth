@@ -1,0 +1,14 @@
+{
+  "name": "sanity-plugin-preview-auth-workspace",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm -r run dev",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

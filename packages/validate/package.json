@@ -1,0 +1,47 @@
+{
+  "name": "sanity-preview-auth",
+  "version": "0.1.0",
+  "description": "Framework-agnostic utilities for long-lived Sanity preview authentication",
+  "keywords": [
+    "sanity",
+    "preview",
+    "authentication",
+    "draft-mode"
+  ],
+  "homepage": "https://github.com/ameenaburayya/sanity-plugin-preview-auth",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ameenaburayya/sanity-plugin-preview-auth.git",
+    "directory": "packages/validate"
+  },
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "pkg-utils build --strict",
+    "dev": "pkg-utils watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "@sanity/client": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@sanity/client": "^6.0.0",
+    "@sanity/pkg-utils": "^6.0.0",
+    "typescript": "^5.0.0"
+  }
+}
