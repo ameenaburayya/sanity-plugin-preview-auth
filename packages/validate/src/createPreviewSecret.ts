@@ -1,5 +1,13 @@
-import type { SanityClient } from '@sanity/client';
 import { PREVIEW_AUTH_SECRET_TYPE, THREE_MONTHS_IN_SECONDS } from './constants';
+
+/** @public */
+export type SanityClientLike = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  patch: (id: string) => any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  transaction: () => any;
+  delete: (params: { query: string }) => Promise<unknown>;
+};
 
 function generateSecret(): string {
   if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
@@ -30,8 +38,9 @@ function generateId(): string {
 const buildDeleteExpiredQuery = () =>
   `*[_type == "${PREVIEW_AUTH_SECRET_TYPE}" && dateTime(expiresAt) < dateTime(now())]`;
 
+/** @public */
 export type CreatePreviewSecretOptions = {
-  client: SanityClient;
+  client: SanityClientLike;
   source: string;
   studioUrl: string;
   userId?: string;
@@ -39,9 +48,10 @@ export type CreatePreviewSecretOptions = {
 };
 
 /**
- * Creates a long-lived preview auth secret stored as a `sanity.previewAuthSecret`
- * document. Unlike secrets created by the Presentation tool, these use an explicit
- * `expiresAt` field and are not swept by @sanity/preview-url-secret's cleanup.
+ * Creates a long-lived preview auth secret stored as a `sanity.previewAuthSecret` document.
+ * Unlike secrets created by the Presentation tool, these use an explicit `expiresAt` field
+ * and are not swept by \@sanity/preview-url-secret's 1-hour cleanup.
+ * @public
  */
 export async function createPreviewSecret({
   client,
@@ -55,14 +65,12 @@ export async function createPreviewSecret({
   const secret = generateSecret();
 
   try {
+    const patch = client.patch(_id).set({ secret, source, studioUrl, userId, expiresAt: expiresAt.toISOString() });
+
     await client
       .transaction()
       .createOrReplace({ _id, _type: PREVIEW_AUTH_SECRET_TYPE })
-      .patch(
-        client
-          .patch(_id)
-          .set({ secret, source, studioUrl, userId, expiresAt: expiresAt.toISOString() })
-      )
+      .patch(patch)
       .commit({ tag: 'preview-auth.create-secret' });
 
     return { secret, expiresAt };

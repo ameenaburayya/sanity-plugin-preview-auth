@@ -16,6 +16,7 @@
     "directory": "packages/plugin"
   },
   "license": "MIT",
+  "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,8 +26,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs",
       "default": "./dist/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
+  "sideEffects": false,
+  "browserslist": "extends @sanity/browserslist-config",
   "files": [
     "dist",
     "src"
@@ -47,6 +51,7 @@
     "sanity": ">=3.0.0"
   },
   "devDependencies": {
+    "@sanity/browserslist-config": "^1.0.5",
     "@sanity/icons": "^3.0.0",
     "@sanity/pkg-utils": "^6.0.0",
     "@sanity/ui": "^2.0.0",

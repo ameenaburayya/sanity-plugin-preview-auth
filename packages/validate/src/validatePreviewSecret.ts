@@ -1,5 +1,11 @@
-import type { SanityClient } from '@sanity/client';
 import { PREVIEW_AUTH_SECRET_TYPE, PRESENTATION_SECRET_TTL } from './constants';
+
+// Structural type — avoids version conflicts between @sanity/client v6 and v7
+/** @public */
+export type SanityFetchClientLike = {
+  withConfig: (config: Record<string, unknown>) => SanityFetchClientLike;
+  fetch: <T>(query: string, params?: Record<string, unknown>) => Promise<T>;
+};
 
 type SecretDocument = {
   _id: string;
@@ -29,6 +35,7 @@ const sharedQuery = `*[_id == "sanity-preview-url-secret.share-access" && _type 
   studioUrl
 }`;
 
+/** @public */
 export type ValidatePreviewSecretResult = {
   isValid: boolean;
   studioUrl: string | null;
@@ -36,6 +43,7 @@ export type ValidatePreviewSecretResult = {
 
 /**
  * Validates a preview secret against:
+ * @public
  * 1. Long-lived secrets (`sanity.previewAuthSecret`) created by this plugin
  * 2. Short-lived secrets (`sanity.previewUrlSecret`) created by the Presentation tool
  * 3. Public shared access secrets
@@ -44,7 +52,7 @@ export type ValidatePreviewSecretResult = {
  */
 export async function validatePreviewSecret(
   secret: string | undefined,
-  client: SanityClient
+  client: SanityFetchClientLike
 ): Promise<ValidatePreviewSecretResult> {
   if (!secret?.trim()) {
     return { isValid: false, studioUrl: null };

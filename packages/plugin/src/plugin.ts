@@ -3,6 +3,7 @@ import { EyeOpenIcon } from '@sanity/icons';
 import { PreviewAuthPage } from './components/PreviewAuthPage';
 import { previewAuthSecret } from './schema/previewAuthSecret';
 
+/** @public */
 export type PreviewAuthPluginOptions = {
   /** The origin of your preview site, e.g. https://preview.mysite.com */
   previewOrigin: string;
@@ -18,6 +19,7 @@ const TOOL_NAME = 'preview-auth';
  * Registers:
  * - A hidden `preview-auth` tool reachable via `/preview-auth?redirect=…`
  * - The `sanity.previewAuthSecret` schema type for long-lived secrets
+ * @public
  */
 export const previewAuthPlugin = definePlugin<PreviewAuthPluginOptions>((options) => ({
   name: TOOL_NAME,

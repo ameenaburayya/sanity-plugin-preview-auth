@@ -5,8 +5,10 @@
  * documents of this type use an explicit `expiresAt` field so they are
  * NOT cleaned up by @sanity/preview-url-secret's 1-hour TTL sweep.
  */
+/** @public */
 export const PREVIEW_AUTH_SECRET_TYPE = 'sanity.previewAuthSecret';
 
+/** @public */
 export const THREE_MONTHS_IN_SECONDS = 60 * 60 * 24 * 90;
 
 /** TTL used by @sanity/preview-url-secret for short-lived Presentation tool secrets. */

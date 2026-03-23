@@ -5,6 +5,7 @@ import { PREVIEW_AUTH_SECRET_TYPE } from 'sanity-preview-auth';
  * System document type for long-lived preview auth secrets.
  * Add this to your Sanity schema types array, or use `previewAuthPlugin`
  * which registers it automatically.
+ * @public
  */
 export const previewAuthSecret = defineType({
   name: PREVIEW_AUTH_SECRET_TYPE,
