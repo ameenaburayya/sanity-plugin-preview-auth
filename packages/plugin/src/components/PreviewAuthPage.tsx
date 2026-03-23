@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { Button, Card, Container, Flex, Heading, Stack, Text } from '@sanity/ui';
 import { EyeOpenIcon } from '@sanity/icons';
 import { useClient, useCurrentUser } from 'sanity';
-import { createPreviewSecret } from 'sanity-preview-auth';
+import { createPreviewSecret } from 'sanity-plugin-preview-auth-validate';
 
 export type PreviewAuthPageProps = {
   previewOrigin: string;

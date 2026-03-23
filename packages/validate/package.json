@@ -1,5 +1,5 @@
 {
-  "name": "sanity-preview-auth",
+  "name": "sanity-plugin-preview-auth-validate",
   "version": "0.1.0",
   "description": "Framework-agnostic utilities for long-lived Sanity preview authentication",
   "keywords": [

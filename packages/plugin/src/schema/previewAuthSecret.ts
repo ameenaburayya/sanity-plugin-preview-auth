@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity';
-import { PREVIEW_AUTH_SECRET_TYPE } from 'sanity-preview-auth';
+import { PREVIEW_AUTH_SECRET_TYPE } from 'sanity-plugin-preview-auth-validate';
 
 /**
  * System document type for long-lived preview auth secrets.

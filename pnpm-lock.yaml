@@ -10,7 +10,7 @@ importers:
 
   packages/plugin:
     dependencies:
-      sanity-preview-auth:
+      sanity-plugin-preview-auth-validate:
         specifier: workspace:*
         version: link:../validate
     devDependencies:
@@ -44,9 +44,6 @@ importers:
       '@sanity/browserslist-config':
         specifier: ^1.0.5
         version: 1.0.5
-      '@sanity/client':
-        specifier: ^6.0.0
-        version: 6.29.1(debug@4.4.3)
       '@sanity/pkg-utils':
         specifier: ^6.0.0
         version: 6.13.5(@types/babel__core@7.20.5)(@types/node@25.5.0)(typescript@5.9.3)

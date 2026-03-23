@@ -42,7 +42,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "sanity-preview-auth": "workspace:*"
+    "sanity-plugin-preview-auth-validate": "workspace:*"
   },
   "peerDependencies": {
     "@sanity/icons": ">=3.0.0",
